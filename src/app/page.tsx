@@ -81,6 +81,12 @@ export default function WorkspaceLayout() {
         streamController.updateViewConfig({ filters: {}, searchTokens: [] });
         filterPanelRef.current?.clearAll();
       }
+      if (e.key === 'e' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        import('@/lib/exportCsv').then(({ exportToCsv }) => {
+          exportToCsv(stateEngine.getViewPool(streamController.getViewConfig()));
+        });
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
 
@@ -128,15 +134,21 @@ export default function WorkspaceLayout() {
     streamController.updateViewConfig({ searchTokens: tokens });
   };
 
+  const handleExport = () => {
+    import('@/lib/exportCsv').then(({ exportToCsv }) => {
+      exportToCsv(stateEngine.getViewPool(streamController.getViewConfig()));
+    });
+  };
+
   const handleReset = () => {
     setPanelVisibility(resetPanels());
   };
 
   return (
     <div className={isPausedUI ? 'stream-disconnected' : ''} style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: 'var(--bg-terminal)', overflow: 'hidden' }}>
-      <Topbar ref={topbarRef} isPaused={isPausedUI} onPausePlay={handlePausePlay} />
+      <Topbar ref={topbarRef} isPaused={isPausedUI} onPausePlay={handlePausePlay} onExport={handleExport} />
       
-      <PanelToggleBar ref={panelToggleRef} visibility={panelVisibility as any} onToggle={handleTogglePanel as any} onReset={handleReset} />
+      <PanelToggleBar ref={panelToggleRef} visibility={panelVisibility as Record<string, boolean>} onToggle={handleTogglePanel} onReset={handleReset} />
       
       {/* KPI Strip — slides out vertically when hidden */}
       <div className="panel-slide" data-visible={panelVisibility.kpiStrip}>
