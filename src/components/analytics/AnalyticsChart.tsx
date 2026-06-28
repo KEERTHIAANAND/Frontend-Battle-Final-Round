@@ -57,7 +57,7 @@ function computeTopIndustry(pool: RpaRow[]) {
   }
   let topInd = 'N/A';
   let maxAvg = -Infinity;
-  for (const [ind, data] of industryMap.entries()) {
+  for (const [ind, data] of Array.from(industryMap.entries())) {
     const avg = data.sum / data.count;
     if (avg > maxAvg) {
       maxAvg = avg;
@@ -106,7 +106,8 @@ export interface AnalyticsChartHandle {
   update: (pool: RpaRow[]) => void;
 }
 
-const AnalyticsChart = forwardRef<AnalyticsChartHandle, Record<string, never>>(
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const AnalyticsChart = forwardRef<AnalyticsChartHandle, {}>(
   function AnalyticsChart(props, ref) {
     const barChartRef = useRef<Chart | null>(null);
     const doughnutChartRef = useRef<Chart | null>(null);

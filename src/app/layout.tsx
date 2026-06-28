@@ -12,15 +12,16 @@ export const metadata: Metadata = {
     'RPA Control Terminal',
   ],
   authors: [{ name: 'AtlasRPA Systems' }],
-  themeColor: '#080C14',
   icons: {
     icon: '/favicon.ico',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport = {
+  themeColor: '#080C14',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 /* ─── Root Layout ───────────────────────────────────────────────────────────── */

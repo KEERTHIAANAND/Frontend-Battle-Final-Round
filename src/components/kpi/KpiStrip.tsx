@@ -8,7 +8,8 @@ export interface KpiStripHandle {
   updateKpi: (kpi: KpiSnapshot) => void;
 }
 
-const KpiStrip = forwardRef<KpiStripHandle, Record<string, never>>(function KpiStrip(props, ref) {
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const KpiStrip = forwardRef<KpiStripHandle, {}>(function KpiStrip(props, ref) {
   const rowsRef = useRef<HTMLSpanElement>(null);
   const robotsRef = useRef<HTMLSpanElement>(null);
   const savingsRef = useRef<HTMLSpanElement>(null);

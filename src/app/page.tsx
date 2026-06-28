@@ -148,7 +148,7 @@ export default function WorkspaceLayout() {
     <div className={isPausedUI ? 'stream-disconnected' : ''} style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: 'var(--bg-terminal)', overflow: 'hidden' }}>
       <Topbar ref={topbarRef} isPaused={isPausedUI} onPausePlay={handlePausePlay} onExport={handleExport} />
       
-      <PanelToggleBar ref={panelToggleRef} visibility={panelVisibility as Record<string, boolean>} onToggle={handleTogglePanel} onReset={handleReset} />
+      <PanelToggleBar ref={panelToggleRef} visibility={panelVisibility} onToggle={handleTogglePanel} onReset={handleReset} />
       
       {/* KPI Strip — slides out vertically when hidden */}
       <div className="panel-slide" data-visible={panelVisibility.kpiStrip}>

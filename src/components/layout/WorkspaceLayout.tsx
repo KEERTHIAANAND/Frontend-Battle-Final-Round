@@ -1,39 +1,42 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, forwardRef } from 'react';
 import Topbar, { type TopbarHandle } from './Topbar';
-import PanelToggleBar, { type PanelKey, type PanelVisibility, type PanelToggleBarHandle } from './PanelToggleBar';
+import PanelToggleBar, { type PanelToggleBarHandle } from './PanelToggleBar';
+import { type PanelKey, type PanelVisibility } from '@/lib/layoutPersistence';
 import { streamController } from '@/lib/streamController';
 
 /* Placeholder components for panels that are not yet built.
    You would normally import these from their respective files. */
-const KpiStrip = forwardRef<HTMLDivElement, unknown>((props, ref) => (
-  <div ref={ref} style={{ padding: 16, borderBottom: '0.5px solid var(--border-panel)' }}>KPI Strip Component</div>
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const KpiStrip = forwardRef<HTMLDivElement, {}>((props, ref) => (
+  <div ref={ref} />
 ));
 KpiStrip.displayName = 'KpiStrip';
 
-const FilterPanel = forwardRef<HTMLDivElement, unknown>((props, ref) => (
-  <div ref={ref} style={{ padding: 16 }}>Filter Panel</div>
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const FilterPanel = forwardRef<HTMLDivElement, {}>((props, ref) => (
+  <div ref={ref} />
 ));
 FilterPanel.displayName = 'FilterPanel';
 
-const VirtualGrid = forwardRef<HTMLDivElement, unknown>((props, ref) => (
-  <div ref={ref} style={{ padding: 16 }}>Data Grid Component</div>
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const VirtualGrid = forwardRef<HTMLDivElement, {}>((props, ref) => (
+  <div ref={ref} />
 ));
 VirtualGrid.displayName = 'VirtualGrid';
 
-const AnalyticsChart = forwardRef<HTMLDivElement, unknown>((props, ref) => (
-  <div ref={ref} style={{ padding: 16 }}>Analytics Chart Component</div>
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const AnalyticsChart = forwardRef<HTMLDivElement, {}>((props, ref) => (
+  <div ref={ref} />
 ));
 AnalyticsChart.displayName = 'AnalyticsChart';
-
-import { forwardRef } from 'react';
 
 const DEFAULT_VISIBILITY: PanelVisibility = {
   kpiStrip: true,
   dataGrid: true,
-  filters: true,
-  analytics: true,
+  filterPanel: true,
+  analyticsChart: true,
 };
 
 export default function WorkspaceLayout({ children }: { children?: React.ReactNode }) {
@@ -108,6 +111,7 @@ export default function WorkspaceLayout({ children }: { children?: React.ReactNo
         ref={topbarRef}
         isPaused={isPaused}
         onPausePlay={handlePausePlay}
+        onExport={() => {}}
       />
       
       <PanelToggleBar
@@ -131,7 +135,7 @@ export default function WorkspaceLayout({ children }: { children?: React.ReactNo
         {/* Filter sidebar — slides left when hidden */}
         <div 
           className="panel-slide-horizontal" 
-          data-visible={panelVisibility.filters}
+          data-visible={panelVisibility.filterPanel}
           style={{
             width: '260px',
             flexShrink: 0,
@@ -150,7 +154,7 @@ export default function WorkspaceLayout({ children }: { children?: React.ReactNo
       {/* Analytics panel — fixed height strip at bottom */}
       <div 
         className="panel-slide" 
-        data-visible={panelVisibility.analytics}
+        data-visible={panelVisibility.analyticsChart}
         style={{
           borderTop: '0.5px solid var(--border-panel)'
         }}
