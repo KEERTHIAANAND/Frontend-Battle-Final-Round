@@ -7,7 +7,16 @@ import { SortHeaderCell, type SortConfig } from './SortHeaderCell';
 import { streamController } from '@/lib/streamController';
 import { inspectorController } from '@/lib/inspectorController';
 
-const COLUMNS = [
+interface GridColumn {
+  key: string;
+  label: string;
+  width: number;
+  sortable: boolean;
+  multiSort?: boolean;
+  flex?: number;
+}
+
+const COLUMNS: GridColumn[] = [
   { key: 'project_id',          label: 'Project ID',      width: 100, sortable: false },
   { key: 'company_id',          label: 'Company',         width: 90,  sortable: false },
   { key: 'project_name',        label: 'Project Name',    width: 160, sortable: false, flex: 1 },
@@ -114,7 +123,7 @@ const VirtualGrid = forwardRef<VirtualGridHandle, VirtualGridProps>(
           cell.className = 'vg-cell';
           cell.style.width = col.width + 'px';
           cell.style.minWidth = col.width + 'px';
-          if ((col as any).flex) cell.style.flex = (col as any).flex.toString();
+          if (col.flex) cell.style.flex = col.flex.toString();
           cell.style.overflow = 'hidden';
           cell.style.textOverflow = 'ellipsis';
           cell.style.whiteSpace = 'nowrap';
