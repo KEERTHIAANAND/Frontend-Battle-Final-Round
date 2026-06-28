@@ -1,5 +1,5 @@
 /**
- * stateEngine.ts — Central state manager for the NeuroPulse Control Terminal.
+ * stateEngine.ts — Central state manager for the AtlasRPA Control Terminal.
  *
  * Design contract:
  *   • Plain TypeScript class — NO React, NO hooks, NO re-renders.

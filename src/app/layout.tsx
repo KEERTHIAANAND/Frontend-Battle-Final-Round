@@ -5,19 +5,17 @@ import './globals.css';
 /* ─── Metadata ──────────────────────────────────────────────────────────────── */
 
 export const metadata: Metadata = {
-  title: 'NeuroPulse Control Terminal',
-  description:
-    'High-density enterprise RPA monitoring dashboard — real-time process automation telemetry at your fingertips.',
+  title: 'AtlasRPA',
+  description: 'Enterprise RPA telemetry and control dashboard.',
   keywords: [
-    'RPA',
-    'dashboard',
-    'automation',
-    'monitoring',
-    'enterprise',
-    'NeuroPulse',
+    'AtlasRPA',
+    'RPA Control Terminal',
   ],
-  authors: [{ name: 'NeuroPulse Systems' }],
+  authors: [{ name: 'AtlasRPA Systems' }],
   themeColor: '#080C14',
+  icons: {
+    icon: '/favicon.ico',
+  },
   viewport: {
     width: 'device-width',
     initialScale: 1,

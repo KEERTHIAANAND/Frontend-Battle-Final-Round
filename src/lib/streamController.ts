@@ -1,5 +1,5 @@
 /**
- * streamController.ts — Bridge between dataStream.js and the NeuroPulse app.
+ * streamController.ts — Bridge between dataStream.js and the AtlasRPA app.
  *
  * This module:
  *   1. Hooks into window.initializeRpaStream (from the hackathon-provided engine)

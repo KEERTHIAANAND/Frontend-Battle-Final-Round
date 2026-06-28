@@ -238,7 +238,7 @@ const Topbar = forwardRef(function Topbar(
             color: 'var(--text-primary)',
           }}
         >
-          NeuroPulse
+          AtlasRPA
         </span>
         <span
           style={{

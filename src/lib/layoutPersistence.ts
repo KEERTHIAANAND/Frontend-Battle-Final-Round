@@ -1,9 +1,8 @@
-export type PanelKey = 'kpiStrip' | 'filterPanel' | 'dataGrid' | 'analyticsChart';
-export type PanelVisibility = Record<PanelKey, boolean>;
+import type { PanelVisibility, PanelKey } from '@/types/rpa';
 
-const KEY = 'neuropulse_v1_panels';
+const KEY = 'atlasrpa_v1_panels';
 
-const DEFAULTS: PanelVisibility = {
+export const DEFAULT_VISIBILITY: PanelVisibility = {
   kpiStrip: true,
   filterPanel: true,
   dataGrid: true,
@@ -12,12 +11,12 @@ const DEFAULTS: PanelVisibility = {
 
 export function loadPanelVisibility(): PanelVisibility {
   try {
-    if (typeof window === 'undefined') return DEFAULTS;
+    if (typeof window === 'undefined') return DEFAULT_VISIBILITY;
     const raw = localStorage.getItem(KEY);
-    if (!raw) return DEFAULTS;
-    return { ...DEFAULTS, ...JSON.parse(raw) };
+    if (!raw) return DEFAULT_VISIBILITY;
+    return { ...DEFAULT_VISIBILITY, ...JSON.parse(raw) };
   } catch {
-    return DEFAULTS;
+    return DEFAULT_VISIBILITY;
   }
 }
 
@@ -36,6 +35,6 @@ export function togglePanel(current: PanelVisibility, key: PanelKey): PanelVisib
 }
 
 export function resetPanels(): PanelVisibility {
-  savePanelVisibility(DEFAULTS);
-  return DEFAULTS;
+  savePanelVisibility(DEFAULT_VISIBILITY);
+  return DEFAULT_VISIBILITY;
 }

@@ -7,22 +7,22 @@ import { streamController } from '@/lib/streamController';
 
 /* Placeholder components for panels that are not yet built.
    You would normally import these from their respective files. */
-const KpiStrip = forwardRef<HTMLDivElement, any>((props, ref) => (
+const KpiStrip = forwardRef<HTMLDivElement, unknown>((props, ref) => (
   <div ref={ref} style={{ padding: 16, borderBottom: '0.5px solid var(--border-panel)' }}>KPI Strip Component</div>
 ));
 KpiStrip.displayName = 'KpiStrip';
 
-const FilterPanel = forwardRef<HTMLDivElement, any>((props, ref) => (
+const FilterPanel = forwardRef<HTMLDivElement, unknown>((props, ref) => (
   <div ref={ref} style={{ padding: 16 }}>Filter Panel</div>
 ));
 FilterPanel.displayName = 'FilterPanel';
 
-const VirtualGrid = forwardRef<HTMLDivElement, any>((props, ref) => (
+const VirtualGrid = forwardRef<HTMLDivElement, unknown>((props, ref) => (
   <div ref={ref} style={{ padding: 16 }}>Data Grid Component</div>
 ));
 VirtualGrid.displayName = 'VirtualGrid';
 
-const AnalyticsChart = forwardRef<HTMLDivElement, any>((props, ref) => (
+const AnalyticsChart = forwardRef<HTMLDivElement, unknown>((props, ref) => (
   <div ref={ref} style={{ padding: 16 }}>Analytics Chart Component</div>
 ));
 AnalyticsChart.displayName = 'AnalyticsChart';

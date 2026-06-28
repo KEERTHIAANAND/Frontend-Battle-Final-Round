@@ -1,6 +1,6 @@
-# NeuroPulse Control Terminal
+# AtlasRPA
 
-NeuroPulse is a high-density, real-time enterprise RPA monitoring dashboard built for the Frontend Battle 3.0 (Phase 2). It consumes a live 50,000-row telemetry stream at 60 frames per second.
+AtlasRPA is a high-density, real-time enterprise RPA monitoring dashboard built for the Frontend Battle 3.0 (Phase 2). It consumes a live 50,000-row telemetry stream at 60 frames per second.
 
 [**🔗 Live Demo**](#) | [**🐙 GitHub Repository**](#)
 

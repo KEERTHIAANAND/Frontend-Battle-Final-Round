@@ -88,9 +88,9 @@ function IdentitySection({row}:{row:RpaRow}){
       <div style={{fontSize:18,fontFamily:'var(--font-mono)',fontWeight:500,color:'var(--text-primary)',marginBottom:14,wordBreak:'break-word'}}>{row.project_name}</div>
       <div className="inspector-stat-grid">
         <div className="inspector-stat-item"><div className="inspector-stat-label">Company</div><div className="inspector-stat-value">{row.company_id}</div></div>
-        <div className="inspector-stat-item"><div className="inspector-stat-label">Partner</div><div className="inspector-stat-value" style={{color:'var(--text-secondary)',fontFamily:'var(--font-sans)'}}>{(row as any).partner_vendor||'—'}</div></div>
+        <div className="inspector-stat-item"><div className="inspector-stat-label">Partner</div><div className="inspector-stat-value" style={{color:'var(--text-secondary)',fontFamily:'var(--font-sans)'}}>{(row as Record<string, string>).partner_vendor||'—'}</div></div>
         <div className="inspector-stat-item"><div className="inspector-stat-label">Location</div><div className="inspector-stat-value">{flag} {row.country}</div></div>
-        <div className="inspector-stat-item"><div className="inspector-stat-label">Industry</div><span style={{display:'inline-block',background:'rgba(255,255,255,0.06)',border:'0.5px solid rgba(255,255,255,0.12)',borderRadius:4,padding:'3px 8px',fontSize:11,fontFamily:'var(--font-sans)',color:'var(--text-secondary)',alignSelf:'flex-start'}}>{(row as any).industry||'—'}</span></div>
+        <div className="inspector-stat-item"><div className="inspector-stat-label">Industry</div><span style={{display:'inline-block',background:'rgba(255,255,255,0.06)',border:'0.5px solid rgba(255,255,255,0.12)',borderRadius:4,padding:'3px 8px',fontSize:11,fontFamily:'var(--font-sans)',color:'var(--text-secondary)',alignSelf:'flex-start'}}>{(row as Record<string, string>).industry||'—'}</span></div>
         <div className="inspector-stat-item"><div className="inspector-stat-label">Department</div><div className="inspector-stat-value" style={{color:'var(--text-secondary)',fontFamily:'var(--font-sans)'}}>{row.department}</div></div>
         <div className="inspector-stat-item"><div className="inspector-stat-label">Type</div><span className="type-pill" style={{background:`rgba(${tc[0]},0.12)`,border:`0.5px solid rgba(${tc[0]},0.3)`,color:tc[1],alignSelf:'flex-start'}}>{row.automation_type}</span></div>
       </div>
@@ -100,8 +100,8 @@ function IdentitySection({row}:{row:RpaRow}){
 
 function TimelineSection({row}:{row:RpaRow}){
   const barRef=useRef<HTMLDivElement>(null);
-  const start=new Date((row as any).start_date);
-  const end=(row as any).completion_date?new Date((row as any).completion_date):new Date();
+  const start=new Date((row as Record<string, string>).start_date);
+  const end=(row as Record<string, string>).completion_date?new Date((row as Record<string, string>).completion_date):new Date();
   const today=new Date();
   const totalDays=Math.max(1,(end.getTime()-start.getTime())/86400000);
   const elapsed=Math.min(totalDays,Math.max(0,(today.getTime()-start.getTime())/86400000));
@@ -121,8 +121,8 @@ function TimelineSection({row}:{row:RpaRow}){
     <div className="inspector-section">
       <div className="inspector-section-label">Timeline</div>
       <div style={{display:'flex',justifyContent:'space-between',marginBottom:8,fontSize:10,color:'var(--text-muted)',fontFamily:'var(--font-mono)'}}>
-        <span>{formatDate((row as any).start_date)}</span>
-        <span>{(row as any).completion_date?formatDate((row as any).completion_date):'Ongoing'}</span>
+        <span>{formatDate((row as Record<string, string>).start_date)}</span>
+        <span>{(row as Record<string, string>).completion_date?formatDate((row as Record<string, string>).completion_date):'Ongoing'}</span>
       </div>
       <div className="inspector-bar-track">
         <div ref={barRef} className="inspector-bar-fill" style={{background:bg}}/>
@@ -225,8 +225,8 @@ function OperationalSection({row}:{row:RpaRow}){
 }
 
 function InfrastructureSection({row}:{row:RpaRow}){
-  const ai=(row as any).ai_enabled==='Yes';
-  const cloud=(row as any).cloud_deployed==='Yes';
+  const ai=(row as Record<string, string>).ai_enabled==='Yes';
+  const cloud=(row as Record<string, string>).cloud_deployed==='Yes';
   return(
     <div className="inspector-section">
       <div className="inspector-section-label">Infrastructure</div>
