@@ -19,12 +19,13 @@ export interface TopbarHandle {
 interface TopbarProps {
   isPaused: boolean;
   onPausePlay: () => void;
+  onExport: () => void;
 }
 
 /* ═══ Component ═══════════════════════════════════════════════════════════════ */
 
 const Topbar = forwardRef(function Topbar(
-  { isPaused, onPausePlay }: TopbarProps,
+  { isPaused, onPausePlay, onExport }: TopbarProps,
   ref: Ref<TopbarHandle>,
 ) {
   /* ── DOM refs for direct patching ── */
@@ -278,6 +279,9 @@ const Topbar = forwardRef(function Topbar(
         <span ref={memoryRef} style={mono10}>MEM: —</span>
         <span ref={lastUpdateRef} style={mono10}>↻ 0ms ago</span>
         <div style={separator} />
+        <button style={btnBase} onClick={onExport} title="Export CSV (Ctrl+E)">
+          📥 Export
+        </button>
         <button ref={pauseBtnRef} style={btnBase} onClick={onPausePlay}>
           {isPaused ? '▶ Resume' : '⏸ Pause'}
         </button>
