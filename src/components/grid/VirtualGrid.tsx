@@ -23,7 +23,6 @@ const COLUMNS = [
 ];
 
 const ROW_HEIGHT = 40;
-const OVERSCAN = 5;
 
 interface VirtualGridProps {
   onSort?: (sorts: SortConfig[]) => void;

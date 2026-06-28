@@ -106,7 +106,7 @@ export interface AnalyticsChartHandle {
   update: (pool: RpaRow[]) => void;
 }
 
-const AnalyticsChart = forwardRef<AnalyticsChartHandle, {}>(
+const AnalyticsChart = forwardRef<AnalyticsChartHandle, Record<string, never>>(
   function AnalyticsChart(props, ref) {
     const barChartRef = useRef<Chart | null>(null);
     const doughnutChartRef = useRef<Chart | null>(null);
