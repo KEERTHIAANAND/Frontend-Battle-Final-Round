@@ -10,14 +10,14 @@ import { inspectorController } from '@/lib/inspectorController';
 const COLUMNS = [
   { key: 'project_id',          label: 'Project ID',      width: 100, sortable: false },
   { key: 'company_id',          label: 'Company',         width: 90,  sortable: false },
-  { key: 'project_name',        label: 'Project Name',    width: 160, sortable: false },
+  { key: 'project_name',        label: 'Project Name',    width: 160, sortable: false, flex: 1 },
   { key: 'project_status',      label: 'Status',          width: 90,  sortable: false },
-  { key: 'automation_type',     label: 'Type',            width: 140, sortable: false },
+  { key: 'automation_type',     label: 'Type',            width: 140, sortable: false, flex: 1 },
   { key: 'robots_deployed',     label: 'Robots',          width: 70,  sortable: false },
   { key: 'budget_usd',          label: 'Budget',          width: 110, sortable: true, multiSort: true },
   { key: 'annual_savings_usd',  label: 'Savings',         width: 110, sortable: true, multiSort: true },
   { key: 'roi_percent',         label: 'ROI %',           width: 80,  sortable: true, multiSort: true },
-  { key: 'department',          label: 'Department',      width: 130, sortable: false, multiSort: true },
+  { key: 'department',          label: 'Department',      width: 130, sortable: false, multiSort: true, flex: 1 },
   { key: 'country',             label: 'Country',         width: 100, sortable: false, multiSort: true },
   { key: 'employee_hours_saved',label: 'Hours Saved',     width: 100, sortable: true, multiSort: true },
 ];
@@ -114,6 +114,7 @@ const VirtualGrid = forwardRef<VirtualGridHandle, VirtualGridProps>(
           cell.className = 'vg-cell';
           cell.style.width = col.width + 'px';
           cell.style.minWidth = col.width + 'px';
+          if ((col as any).flex) cell.style.flex = (col as any).flex.toString();
           cell.style.overflow = 'hidden';
           cell.style.textOverflow = 'ellipsis';
           cell.style.whiteSpace = 'nowrap';

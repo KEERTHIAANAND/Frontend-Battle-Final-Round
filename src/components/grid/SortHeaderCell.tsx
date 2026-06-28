@@ -39,6 +39,7 @@ export function SortHeaderCell({ col, currentSorts, onSort }: SortHeaderCellProp
         padding: '0 12px',
         width: `${col.width}px`,
         minWidth: `${col.width}px`,
+        flex: (col as any).flex || 'none',
         cursor: col.sortable ? 'pointer' : 'default',
         userSelect: 'none',
         fontFamily: 'var(--font-sans)',
