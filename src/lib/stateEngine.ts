@@ -102,7 +102,7 @@ class StateEngine {
     let pool = Array.from(this.masterPool.values());
 
     // Step 2: search filter (AND logic across 4 fields)
-    if (config.searchTokens.length > 0) {
+    if (config.searchTokens && config.searchTokens.length > 0) {
       pool = pool.filter((row) => {
         const text = [
           row.project_name,
@@ -121,24 +121,26 @@ class StateEngine {
     }
 
     // Step 3: categorical filters (OR within field, AND between fields)
-    if (config.filters.automation_type && config.filters.automation_type.length > 0) {
-      pool = pool.filter((r) =>
-        config.filters.automation_type!.includes(r.automation_type),
-      );
-    }
-    if (config.filters.department && config.filters.department.length > 0) {
-      pool = pool.filter((r) =>
-        config.filters.department!.includes(r.department),
-      );
-    }
-    if (config.filters.industry && config.filters.industry.length > 0) {
-      pool = pool.filter((r) =>
-        config.filters.industry!.includes(r.industry),
-      );
+    if (config.filters) {
+      if (config.filters.automation_type && config.filters.automation_type.length > 0) {
+        pool = pool.filter((r) =>
+          config.filters.automation_type!.includes(r.automation_type),
+        );
+      }
+      if (config.filters.department && config.filters.department.length > 0) {
+        pool = pool.filter((r) =>
+          config.filters.department!.includes(r.department),
+        );
+      }
+      if (config.filters.industry && config.filters.industry.length > 0) {
+        pool = pool.filter((r) =>
+          config.filters.industry!.includes(r.industry),
+        );
+      }
     }
 
     // Step 4: multi-column sort (priority order)
-    if (config.sorts.length > 0) {
+    if (config.sorts && config.sorts.length > 0) {
       pool = [...pool].sort((a, b) => {
         for (const s of config.sorts) {
           const av = a[s.column];
