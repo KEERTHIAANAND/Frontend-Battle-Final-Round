@@ -10,9 +10,9 @@ import AnalyticsChart, { type AnalyticsChartHandle } from '@/components/analytic
 
 import { streamController } from '@/lib/streamController';
 import { stateEngine, type KpiSnapshot } from '@/lib/stateEngine';
-import type { RpaRow, PanelKey, PanelVisibility } from '@/types/rpa';
+import type { RpaRow } from '@/types/rpa';
 import type { SortConfig } from '@/components/grid/SortHeaderCell';
-import { loadPanelVisibility, togglePanel, resetPanels } from '@/lib/layoutPersistence';
+import { loadPanelVisibility, togglePanel, resetPanels, type PanelKey, type PanelVisibility } from '@/lib/layoutPersistence';
 import { inspectorController } from '@/lib/inspectorController';
 import InspectorPanel from '@/components/inspector/InspectorPanel';
 

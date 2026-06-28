@@ -1,4 +1,5 @@
-import type { PanelVisibility, PanelKey } from '@/types/rpa';
+export type PanelKey = 'kpiStrip' | 'filterPanel' | 'dataGrid' | 'analyticsChart';
+export type PanelVisibility = Record<PanelKey, boolean>;
 
 const KEY = 'atlasrpa_v1_panels';
 
