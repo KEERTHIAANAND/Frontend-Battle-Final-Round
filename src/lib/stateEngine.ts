@@ -113,6 +113,7 @@ class StateEngine {
           row.industry,
           row.department,
           row.automation_type,
+          row.project_status,
         ]
           .join(' ')
           .toLowerCase();
